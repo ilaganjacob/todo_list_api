@@ -6,5 +6,6 @@ export const connectDB = async () => {
     console.log("Connected to database!");
   } catch (err) {
     console.log("Error connecting to database", err);
+    process.exit(1); // exit app manually because we can't run it without DB
   }
 };
