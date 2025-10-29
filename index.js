@@ -1,16 +1,17 @@
 import mongodb from "mongodb";
 import express from "express";
-
+require("dotenv").config();
 const app = express();
 const port = 3000;
 
 const MongoClient = mongodb.MongoClient;
-const uri =
-  "mongodb+srv://jacobcandoilagan:ixT60exMb7EGUrrt@jacob-cluster.j3bsxku.mongodb.net/?appName=jacob-cluster";
 
 const client = new MongoClient(uri);
 
 const dbConnection = async function (req, res, next) {
+  const uri = process.env.uri;
+  const client = new MongoClient(uri);
+
   try {
     await client.connect();
     console.log("Connected to db!");
