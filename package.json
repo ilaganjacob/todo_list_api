@@ -12,6 +12,7 @@
     "url": "git+https://github.com/ilaganjacob/todo_list_api.git"
   },
   "keywords": [],
+  "type": "module",
   "author": "",
   "license": "ISC",
   "bugs": {
