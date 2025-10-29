@@ -1,12 +1,13 @@
-const express = require('express')
+import mongodb from "mongodb";
+const express = require("express");
 
 const app = express();
-const port = 3000
+const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send("Works!")
-})
+app.get("/", (req, res) => {
+  res.send("Works!");
+});
 
-app.listen(port, ()=> {
-    console.log(`App listening on port ${port}`)
-})
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});
