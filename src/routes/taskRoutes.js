@@ -15,10 +15,15 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", (req, res) => {});
-
-router.post("/", (req, res) => {
-  res;
+router.post("/", async (req, res) => {
+  try {
+    const task = await Task.create(req.body);
+    res.status(201).send(task);
+    console.log("The task was created: ", task);
+  } catch (err) {
+    console.log("Error creating task", err);
+    res.status(500).json({ error: "Failed to create task" });
+  }
 });
 
 export default router;
