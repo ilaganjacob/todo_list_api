@@ -3,10 +3,8 @@ import mongodb from "mongodb";
 const app = express();
 
 const MongoClient = mongodb.MongoClient;
-const uri =
-  "mongodb+srv://jacobcandoilagan:ixT60exMb7EGUrrt@jacob-cluster.j3bsxku.mongodb.net/?appName=jacob-cluster";
 
-const client = new MongoClient(uri);
+const client = new MongoClient(process.env.uri);
 
 // Get all tasks
 app.get("/", (req, res) => {
