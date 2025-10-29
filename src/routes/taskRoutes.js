@@ -1,12 +1,16 @@
 import express from "express";
+import Task from "../models/task";
 const app = express();
 
 // Get all tasks
-app.get("/tasks", (req, res) => {
+app.get("/tasks", async (req, res) => {
   try {
-    const tasks = await;
+    // This finds all documents in the tasks collection
+    const tasks = await Task.find({});
+    res.send(tasks);
   } catch (error) {
     console.log("Error retrieving all the tasks", error);
+    res.status(500).json({ error: "Failed to retrieve the tasks" });
   }
 });
 
