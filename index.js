@@ -1,5 +1,5 @@
 import express from "express";
-import { connectDB } from "./src/config/database";
+import { connectDB } from "./src/config/database.js";
 import "dotenv/config";
 
 await connectDB();
