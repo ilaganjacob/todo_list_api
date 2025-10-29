@@ -1,9 +1,10 @@
 import express from "express";
-import Task from "../models/task";
-const app = express();
+import Task from "../models/task.js";
+
+const router = express.Router();
 
 // Get all tasks
-app.get("/tasks", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // This finds all documents in the tasks collection
     const tasks = await Task.find({});
@@ -14,8 +15,10 @@ app.get("/tasks", async (req, res) => {
   }
 });
 
-app.get("/task/:id", (req, res) => {});
+router.get("/:id", (req, res) => {});
 
-app.post("/", (req, res) => {
+router.post("/", (req, res) => {
   res;
 });
+
+export default router;
