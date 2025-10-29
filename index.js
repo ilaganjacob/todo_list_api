@@ -10,14 +10,15 @@ const uri =
 
 const client = new MongoClient(uri);
 
-async function dbConnection() {
+const dbConnection = async function (req, res, next) {
   try {
     await client.connect();
     console.log("Connected to db!");
+    next();
   } catch (err) {
     console.log("Error connecting to database:", err);
   }
-}
+};
 
 app.use(dbConnection);
 
