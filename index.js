@@ -10,15 +10,22 @@ const uri =
 
 const client = new MongoClient(uri);
 
-client.connect((err) => {
-  const collection = client.db("todo_list_api").collection("tasks");
-  // Perform any actions here
-  console.log("Connected to DB");
-  collection.insertOne({ content: "hi" });
+async function getStarted() {
+  try {
+    const database = client.db("todo_list_api");
+    const collection = database.collection("tasks");
 
-  collection.findOne({ content: "hi" });
-  client.close();
-});
+    const query = { title: "coding" };
+    const task = await collection.findOne(query);
+
+    console.log(task);
+  } catch (err) {
+    console.log("error:", err);
+  } finally {
+    client.close();
+  }
+}
+getStarted();
 
 app.get("/", (req, res) => {
   res.send("Works!");
