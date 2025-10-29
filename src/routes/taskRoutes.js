@@ -7,7 +7,7 @@ app.get("/tasks", async (req, res) => {
   try {
     // This finds all documents in the tasks collection
     const tasks = await Task.find({});
-    res.send(tasks);
+    res.status(200).send(tasks); // send 200 code and also send the tasks
   } catch (error) {
     console.log("Error retrieving all the tasks", error);
     res.status(500).json({ error: "Failed to retrieve the tasks" });
