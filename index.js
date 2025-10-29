@@ -16,8 +16,11 @@ app.get("/", (req, res) => {
 
 app.use("/tasks", taskRoutes); // delegate any routes beginning with '/tasks' to taskRoutes
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
-});
+// Only start server if not testing
+if (process.env.NODE_ENV !== "test") {
+  app.listen(port, () => {
+    console.log(`App listening on port ${port}`);
+  });
+}
 
 export default app;
